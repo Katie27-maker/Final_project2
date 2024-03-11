@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-// import TodoBoard from './component/TodoBoard';
+import TodoBoard from './components/TodoBoard';
 // import Todoitem from './component/Todoitem';
 
 
@@ -21,7 +21,7 @@ function App() {
       <input value={inputValue} type="text" onChange={(event)=>setInputValue(event.target.value)}></input>
       <button onClick={addItem}>추가</button>
 
-      {/* <TodoBoard todoList={todoList}/> */}
+      <TodoBoard todoList={todoList}/>
     </main>
   );
 }
