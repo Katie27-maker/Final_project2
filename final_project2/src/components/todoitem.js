@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Todoitem = () => {
+const Todoitem = (props) => {
+    const todoItem = document.getElementsByClassName('todo-item')
+
     return (
-        <div>
             <div className='todo-item'>
-            {props.todoList}
+                {props.item}  {/* <= todolist에 있던 요소 출력 */} 
+                <input onClick={()=>props.delete(props.item)} type='button' value={"삭제하기"} />
+                <input onClick={()=>props.update(props.item)} type='button' value={"수정하기"} />
             </div>
-        </div>
     );
 };
 
-export default todoitem;
+export default Todoitem;
