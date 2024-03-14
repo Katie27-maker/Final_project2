@@ -17,6 +17,15 @@ function App() {
     setTodoList([...todoList, inputValue])  // 기존에 있는 아이템 유지하고 새로추가
   }
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if(inputValue === ""){
+      return; //if toDo가 비어있다면 return시킨다.
+    }
+    setInputValue("");  // else 그렇지 않다면 toDo를 추가시키는데, input창도 비운다
+
+  }
+
   const DeleteClick = (delete_item) => {
     console.log("필터 되기전 todoList :" + todoList)
     let result = todoList.filter(item=>{return item!==delete_item});   // 조건에 만족하는 애들만 모아서 배열만들어라!
@@ -36,9 +45,17 @@ function App() {
 
   return (
     <main>
-      <input type="text" onChange={(텍스트input)=>{setInputValue(텍스트input.target.value); console.log("inputValue값 변경!")}}></input>
-      <button onClick={addItem}>추가</button>
-      <TodoBoard 삭제하기={DeleteClick} todoList={todoList}/>
+      <form onSubmit={onSubmit}>
+        <input
+        type="text" 
+        value={inputValue} 
+        onChange={(텍스트input)=>{setInputValue(텍스트input.target.value); 
+        console.log("inputValue값 변경!")}} 
+        />
+        
+        <button onClick={addItem}>추가</button>  {/*onClick={onSubmit}*/} 
+        <TodoBoard 삭제하기={DeleteClick} todoList={todoList}/>
+      </form>
     </main>
   );
 }
