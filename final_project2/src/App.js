@@ -11,7 +11,6 @@ function App() {
   // 😀 useState는 페이지 랜더링 시 1회만! 발동! 이후 발동 하지 않는다!!
   const [inputValue,setInputValue] = useState('');    // 아직 입력한 값은 빈 값이니까 비워두기
   const [todoList,setTodoList] = useState([]);        // 아이템을 모아두려면 어떤 타입이 제일 좋으냐 배열이 좋다.
-  
 
   const addItem = () => {
     console.log("inputValue값을 todoList에 추가!");
@@ -36,7 +35,7 @@ function App() {
 
     setTodoList(result);
     console.log(delete_item)
-    console.log("삭제중...")
+    console.log("삭제중.......")
   }
 
   const UpDateClick = (update_item) => {
@@ -48,15 +47,18 @@ function App() {
     <main>
       <form onSubmit={onSubmit}>
         <input
-        type="text" 
-        value={inputValue} 
-        onChange={(텍스트input)=>{setInputValue(텍스트input.target.value); 
-        console.log("inputValue값 변경!")}} 
+          type="text"
+          onChange={inputValue => {
+            setInputValue(inputValue.target.value);
+            console.log("inputValue값 변경!");
+          }}
         />
-        
-        <button onClick={addItem}>추가</button>  {/*onClick={onSubmit}*/} 
-        <TodoBoard 삭제하기={DeleteClick} todoList={todoList} 수정하기={UpDateClick} />
-        
+        <button onClick={addItem}>추가</button> {/*onClick={onSubmit}*/}
+        <TodoBoard
+          삭제하기={DeleteClick}
+          todoList={todoList}
+          수정하기={UpDateClick}
+        />
       </form>
     </main>
   );
